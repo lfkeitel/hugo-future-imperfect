@@ -20,4 +20,6 @@
 </article>
 {{ .Render "prev-next" }}
 
-{{ partials "comments" }}
+{{ if .Site.Params.itemizedComments }}
+    {{ partials "comments" }}
+{{ end }}
