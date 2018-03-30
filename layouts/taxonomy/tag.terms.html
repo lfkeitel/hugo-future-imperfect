@@ -5,9 +5,9 @@
     <!-- Main -->
     <div id="main">
         {{ if .Site.Params.categoriesByCount }}
-            {{ $.Scratch.Set "categories" .Data.Terms.ByCount }}
+            {{ $.Scratch.Set "tags" .Data.Terms.ByCount }}
         {{ else }}
-            {{ $.Scratch.Set "categories" .Data.Terms.Alphabetical }}
+            {{ $.Scratch.Set "tags" .Data.Terms.Alphabetical }}
         {{ end }}
 
         <ul class="posts">
@@ -15,15 +15,15 @@
                 <h1>{{ .Data.Plural }}</h1>
             </header>
             {{ $data := .Data }}
-            {{ range $key, $value := $.Scratch.Get "categories" }}
+            {{ range $key, $value := $.Scratch.Get "tags" }}
                 <li>
                     <article>
                         <header>
                             {{ if ne $value.Name "" }}
-                                <a href="{{"/" | relURL}}{{ $data.Plural }}/{{ $value.Name | urlize }}">{{ $value.Name }}</a>
+                                <a href="{{ printf "/%s/%s" $data.Plural $value.Name | urlize | relLangURL }}">{{ $value.Name }}</a>
                                 <span style="float:right;">{{ $value.Count }}</span>
                             {{ else }}
-                                Uncategorized
+                                {{ i18n "uncategorized" }}
                                 <span style="float:right;">{{ $value.Count }}</span>
                             {{ end }}
                         </header>
@@ -33,6 +33,5 @@
         </ul>
     </div>
 
-    {{ $.Scratch.Set "showCategories" false }}
     {{ partial "sidebar" . }}
 {{ partial "footer" . }}
