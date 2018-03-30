@@ -69,6 +69,11 @@ canonifyURLs = true
   MathJaxCDN = "//cdn.bootcss.com"
   MathJaxVersion = "2.7.1"
 
+  # summaryHome will show post summaries on the home page instead of the full latest
+  # post. summaryHomeCount controls the number of posts shown. 5 is the default count.
+  summaryHome = false
+  summaryHomeCount = 5
+
 # Disqus will take priority over Staticman (github.com/eduardoboucas/staticman)
 # due to its ease of use. Feel free to check out both and decide what you would
 # prefer to use. See Staticman.yml for additional settings.
