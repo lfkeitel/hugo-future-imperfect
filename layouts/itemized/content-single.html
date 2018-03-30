@@ -1,7 +1,7 @@
 <article class="post">
   {{ .Render "header" }}
 
-  {{ if .Site.Params.socialShare }}
+  {{ if and .Site.Params.socialShare (.Params.socialShare | default true) }}
     <section id="social-share">
       <ul class="icons">
         {{ partial "share-links" . }}
