@@ -9,7 +9,7 @@
     {{ end }}
 
     {{ if (and (not .Site.Params.disable_highlight) (not .Params.disable_highlight)) }}
-        {{ $highVersion := .Site.Params.highlightjsVersion | default "9.12.0" }}
+        {{ $highVersion := .Site.Params.highlightjsVersion | default "9.15.9" }}
         {{ $highCDN := .Site.Params.highlightjsVersion | default "//cdn.bootcss.com" }}
         <script src="{{ $highCDN }}/highlight.js/{{ $highVersion }}/highlight.min.js"></script>
 
@@ -40,8 +40,6 @@
       {{ end }}
     {{ end }}
 
-    <!-- This is called by default since this theme uses highlight.js -->
-    <script>hljs.initHighlightingOnLoad();</script>
-      {{ partial "footer_mathjax" . }}
+    {{ partial "footer_mathjax" . }}
   </body>
 </html>
